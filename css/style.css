@@ -1,0 +1,150 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+html,
+body {
+  background-color: rgb(59, 59, 59);
+  height: 100%;
+  line-height: 1;
+}
+textarea,
+button,
+input {
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+}
+button {
+  cursor: pointer;
+  background-color: inherit;
+}
+
+/*--------------------------------------------------------*/
+
+.wrapper {
+  padding-top: 100px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper > main {
+  flex-grow: 1;
+}
+
+[class*="__container"] {
+  max-width: 1250px;
+  margin: 0 auto;
+  font-family: Homenaje;
+}
+
+/*--------------------------------------------------------*/
+
+.card__container {
+  border-radius: 30px;
+  background: rgba(84, 104, 255, 1);
+  background: -o-linear-gradient(
+    -45deg,
+    rgba(84, 104, 255, 1) 22%,
+    rgba(145, 232, 66, 1) 98.25%
+  );
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(84, 104, 255, 1) 22%,
+    rgba(145, 232, 66, 1) 98.25%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(84, 104, 255, 1) 22%,
+    rgba(145, 232, 66, 1) 98.25%
+  );
+  background: linear-gradient(
+    -225deg,
+    rgba(84, 104, 255, 1) 22%,
+    rgba(145, 232, 66, 1) 98.25%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#5468ff", endColorstr="#91e842",GradientType=1 );
+  font-family: Robot + Mono;
+}
+.sreach {
+  display: flex;
+  justify-content: center;
+  padding: 60px 40px;
+}
+.sreach-text {
+  font-size: 20px;
+  padding: 30px 60px;
+  border-radius: 20px;
+}
+.sreach-btn {
+  padding-left: 25px;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.weather-icon {
+  padding-bottom: 20px;
+}
+.temp {
+  font-size: 40px;
+  color: aliceblue;
+}
+.city {
+  font-size: 50px;
+  color: #fff;
+}
+.details {
+  gap: 90px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+  margin-top: 50px;
+}
+.col {
+  display: flex;
+  padding-bottom: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-text {
+  padding-left: 15px;
+  font-size: 30px;
+}
+.humidity {
+}
+.wind {
+}
