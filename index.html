@@ -24,29 +24,32 @@
             <img src="img/search.png" alt="" width="35" height="35" />
           </button>
         </div>
-        <div class="weather">
-          <img
-            src="img/cloudy.png"
-            alt=""
-            height="100"
-            width="100"
-            class="weather-icon"
-          />
-          <h1 class="temp">22°с</h1>
-          <h2 class="city">Kyiv</h2>
-          <div class="details">
-            <div class="col">
-              <img src="img/humidity.png" height="60" width="60" alt="" />
-              <div class="col-text">
-                <p class="humidity">50%</p>
-                <p>Humidity</p>
+        <p class="eror">Error</p>
+        <div class="weather-block">
+          <div class="weather">
+            <img
+              src="img/cloudy.png"
+              alt=""
+              height="100"
+              width="100"
+              class="weather-icon"
+            />
+            <h1 class="temp">22°с</h1>
+            <h2 class="city">Kyiv</h2>
+            <div class="details">
+              <div class="col">
+                <img src="img/humidity.png" height="60" width="60" alt="" />
+                <div class="col-text">
+                  <p class="humidity">50%</p>
+                  <p>Humidity</p>
+                </div>
               </div>
-            </div>
-            <div class="col">
-              <img src="img/wind.png" height="60" width="60" alt="" />
-              <div class="col-text">
-                <p class="wind">15km/h</p>
-                <p>Wind</p>
+              <div class="col">
+                <img src="img/wind.png" height="60" width="60" alt="" />
+                <div class="col-text">
+                  <p class="wind">15km/h</p>
+                  <p>Wind</p>
+                </div>
               </div>
             </div>
           </div>
@@ -58,22 +61,45 @@
       let apiUrl =
         "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
       let input = document.querySelector(".sreach-text");
+      let check = document.querySelector(".weather-block");
+      let errorCheck = document.querySelector(".eror");
+      let weatherIcon = document.querySelector(".weather-icon");
       async function checkWeather(city) {
-        city = input.value;
         const response = await fetch(apiUrl + city + `&appid=${apikey}`);
-        let data = await response.json();
-        document.querySelector(".city").innerHTML = data.name;
-        document.querySelector(".temp").innerHTML =
-          Math.round(data.main.temp) + "°с";
-        document.querySelector(".humidity").innerHTML =
-          data.main.humidity + " " + "%";
-        document.querySelector(".wind").innerHTML =
-          Math.round(data.wind.speed) + " " + "km/h";
-        console.log(data);
+        if (response.status == 404) {
+          check.style.display = "none";
+          errorCheck.style.display = "block";
+        } else {
+          let data = await response.json();
+          document.querySelector(".city").innerHTML = data.name;
+          document.querySelector(".temp").innerHTML =
+            Math.round(data.main.temp) + "°с";
+          document.querySelector(".humidity").innerHTML =
+            data.main.humidity + " " + "%";
+          document.querySelector(".wind").innerHTML =
+            Math.round(data.wind.speed) + " " + "km/h";
+
+          if (data.weather[0].main == "Clouds") {
+            weatherIcon.src = "img/cloudy.png";
+          } else if (data.weather[0].main == "Clear") {
+            weatherIcon.src = "img/sun.png";
+          } else if (data.weather[0].main == "Rain") {
+            weatherIcon.src = "img/rain.png";
+          } else if (data.weather[0].main == "Snow") {
+            weatherIcon.src = "img/snow.png";
+          } else if (data.weather[0].main == "Wind") {
+            weatherIcon.src = "img/wind.png";
+          } else if (data.weather[0].main == "Smoke") {
+            weatherIcon.src = "img/smoke.png";
+          }
+          console.log(data);
+          check.style.display = "block";
+          errorCheck.style.display = "none";
+        }
       }
-      document
-        .querySelector(".sreach-btn")
-        .addEventListener("click", checkWeather);
+      document.querySelector(".sreach-btn").addEventListener("click", () => {
+        checkWeather(input.value);
+      });
     </script>
   </body>
 </html>

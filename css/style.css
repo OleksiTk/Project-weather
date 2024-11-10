@@ -68,6 +68,7 @@ button {
 /*--------------------------------------------------------*/
 
 .card__container {
+  position: relative;
   border-radius: 30px;
   background: rgba(84, 104, 255, 1);
   background: -o-linear-gradient(
@@ -106,8 +107,19 @@ button {
 .sreach-btn {
   padding-left: 25px;
 }
-
+.eror {
+  display: none;
+  font-size: 20px;
+  color: #fff;
+  position: absolute;
+  top: 165px;
+  left: 50px;
+}
+.weather-block {
+  display: none;
+}
 .weather {
+  display: block;
   display: flex;
   align-items: center;
   justify-content: center;
